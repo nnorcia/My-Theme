@@ -1,0 +1,64 @@
+---
+title: "Norcia_Theme"
+author: "Nicholas Norcia"
+date: "October 30, 2018"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+
+z <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, col = Species)) +
+geom_jitter(alpha = 0.7) +
+scale_color_brewer("Species",
+palette = "Dark2",
+labels = c("Setosa","Versicolor","Virginica")) +
+scale_y_continuous("Width (cm)", limits = c(1, 5), expand = c(0, 0)) +
+scale_x_continuous("Length (cm)", limits = c(3, 9), expand = c(0, 0)) +
+ggtitle("Sepals") +
+coord_fixed(1)
+z
+```
+
+```{r}
+z + 
+  theme(plot.background = element_rect(fill = "royalblue", color = "burlywood", size = 3)) +
+  #theme(plot.background = element_rect(fill = "lightgoldenrod")) +
+  theme(legend.background = element_rect(fill = "antiquewhite")) +
+  theme(legend.position = "right", legend.direction = "vertical") +
+  theme(axis.text = element_text(colour = "antiquewhite", face = "bold")) +
+  theme(axis.title = element_text(colour = "antiquewhite")) +
+  theme(axis.ticks = element_line(colour = "antiquewhite", size = .5)) +
+  theme(panel.grid.major = element_line(colour = "floralwhite", linetype = "dashed")) +
+  theme(panel.background = element_rect(fill = "lightcyan")) +
+  theme(panel.border = element_rect(colour = "antiquewhite", fill = NA)) +
+  theme(axis.line = element_line(size = 3, colour = "black")) +
+  theme(legend.box.background = element_rect(colour = "floralwhite", size = 2))
+
+
+  # salaries dataset
+
+```
+
+
+```{r}
+data(Salaries, package="carData")
+salary <- ggplot(Salaries, aes(x=rank, y=salary, fill=sex)) +
+  geom_boxplot() +
+  labs(title="Salary by Rank and Sex", 
+       x="Rank", y="Salary") + 
+  theme(plot.background = element_rect(fill = "royalblue", color = "burlywood", size = 3)) +
+  #theme(plot.background = element_rect(fill = "lightgoldenrod")) +
+  theme(legend.background = element_rect(fill = "antiquewhite")) +
+  theme(legend.position = "right", legend.direction = "vertical") +
+  theme(axis.text = element_text(colour = "antiquewhite", face = "bold")) +
+  theme(axis.title = element_text(colour = "antiquewhite")) +
+  theme(axis.ticks = element_line(colour = "antiquewhite", size = .5)) +
+  theme(panel.grid.major = element_line(colour = "floralwhite", linetype = "dashed")) +
+  theme(panel.background = element_rect(fill = "lightcyan")) +
+  theme(panel.border = element_rect(colour = "antiquewhite", fill = NA)) +
+  theme(axis.line = element_line(size = 3, colour = "black")) +
+  theme(legend.box.background = element_rect(colour = "floralwhite", size = 2))
+salary
+```
+
